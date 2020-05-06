@@ -1,0 +1,4 @@
+.idea
+/server/__pycache__
+/server/views/__pycache__
+/server/utils/__pycache__
