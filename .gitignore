@@ -2,3 +2,6 @@
 /server/__pycache__
 /server/views/__pycache__
 /server/utils/__pycache__
+
+/settings/node_modules
+/settings/dist

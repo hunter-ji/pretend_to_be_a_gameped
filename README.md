@@ -10,6 +10,7 @@
 
 ## 截图
 
+![截图](./Screenshot2.png)
 ![截图](./Screenshot.png)
 
 
