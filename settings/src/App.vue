@@ -17,13 +17,13 @@
       </el-card>
       <!--客户端设置-->
       <div v-for="(item, index) in form" :key="index">
-        <handle :num="index + 1" :form="item" />
+        <handle :num="index + 1" :form="item" @removehandle="remove_handle" />
       </div>
 
       <!--按钮-->
       <div class="handle-btn-group">
-        <el-button type="primary" style="width: 50%;">启动</el-button>
-        <el-button style="width: 50%;">重置</el-button>
+        <el-button type="primary" style="width: 50%;" class="shadow" @click="handle_submit">启动</el-button>
+        <el-button style="width: 50%;" class="shadow" @click="handle_reset">重置</el-button>
       </div>
     </div>
   </div>
@@ -59,17 +59,52 @@ export default {
   mounted() {
     this.fetch_data();
   },
+  watch: {
+    form(val) {
+      this.num = val.length;
+    }
+  },
   methods: {
     fetch_data() {
       this.add_handle();
     },
-    handleChange() {
-      this.add_handle();
+    handleChange(currentValue, oldValue) {
+      if (currentValue > oldValue) {
+        this.add_handle();
+      } else {
+        this.remove_handle(currentValue + 1);
+      }
     },
     add_handle() {
       this.form.push(
         JSON.parse(JSON.stringify(this.handle_object))
       );
+    },
+    remove_handle(num) {
+      new Promise(resolve => {
+        this.form.splice(num - 1, 1);
+        resolve()
+      })
+        .then(() => {
+          this.$message({
+            message: `删除${ num }号手柄成功`,
+            type: "success"
+          })
+        })
+        .catch(() => {
+          this.$message({
+            message: `删除${ num }手柄失败`,
+            type: "error"
+          })
+        })
+
+    },
+    handle_submit() {
+      console.log("待开发...");
+    },
+    handle_reset() {
+      this.form = [];
+      this.add_handle();
     }
   }
 }

@@ -15,7 +15,8 @@ func main() {
 
 	// 路由
 	http.HandleFunc("/handle", views.Handle)
-	http.HandleFunc("/", views.Settings)
+	http.HandleFunc("/heihei", views.Heihei)
+	// http.HandleFunc("/", views.Settings)
 
 	err := http.ListenAndServe(":9090", nil)
 	if err != nil {

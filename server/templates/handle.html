@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <head>
-  <meta charset="utf-8">
-  <title>手柄</title>
-  <link rel="stylesheet" type="text/css" href="../static/handle.css">
+    <meta charset="utf-8">
+    <title>手柄</title>
+    <link rel="stylesheet" type="text/css" href="../static/handle.css">
 </head>
 <body>
 <div class="container">
-  <!--左侧按钮-->
-  <div class="container-side">
-    <div class="container-line-1">
-      <div class="container-item container-item__1"></div>
+    <!--左侧按钮-->
+    <div class="container-side">
+        <div class="container-line-1">
+            <div class="container-item container-item__1" id="left1"></div>
+        </div>
+        <div class="container-line-2">
+            <div class="container-item container-item__2" id="left2"></div>
+            <div class="container-item container-item__3" id="left3"></div>
+        </div>
+        <div class="container-line-1">
+            <div class="container-item container-item__4" id="left4"></div>
+        </div>
     </div>
-    <div class="container-line-2">
-      <div class="container-item container-item__2"></div>
-      <div class="container-item container-item__3"></div>
+    <!--右侧按钮-->
+    <div class="container-side">
+        <div class="container-line-1">
+            <div class="container-item container-item__1" id="right1"></div>
+        </div>
+        <div class="container-line-2">
+            <div class="container-item container-item__2" id="right2"></div>
+            <div class="container-item container-item__3" id="right3"></div>
+        </div>
+        <div class="container-line-1">
+            <div class="container-item container-item__4" id="right4"></div>
+        </div>
     </div>
-    <div class="container-line-1">
-      <div class="container-item container-item__4"></div>
-    </div>
-  </div>
-  <!--右侧按钮-->
-  <div class="container-side">
-    <div class="container-line-1">
-      <div class="container-item container-item__1"></div>
-    </div>
-    <div class="container-line-2">
-      <div class="container-item container-item__2"></div>
-      <div class="container-item container-item__3"></div>
-    </div>
-    <div class="container-line-1">
-      <div class="container-item container-item__4"></div>
-    </div>
-  </div>
 </div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+<script>
+    const left1 = document.getElementById("left1");
+    left1.onclick = () => {
+        console.log("heihei");
+        axios.post("/heihei", JSON.stringify({
+            code: "20000",
+            data: "Hello, World !"
+        })).then(response => {
+            console.log(response);
+        })
+    }
+</script>
 </body>

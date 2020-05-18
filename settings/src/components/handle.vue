@@ -1,7 +1,12 @@
 <template>
   <el-card shadow="always" class="box handle-box">
     <div slot="header">
-      <span>{{ num }}号手柄</span>
+      <div class="handle-card-header">
+        <div>{{ num }}号手柄</div>
+        <div class="handle-card-header__btn" v-show="num !== 1" @click="remove_handle(num)">
+          <i class="el-icon-remove-outline" />
+        </div>
+      </div>
     </div>
     <div class="handle-body">
       <div class="handle-item">
@@ -48,6 +53,11 @@ export default {
   },
   data() {
     return {}
+  },
+  methods: {
+    remove_handle(num) {
+      this.$emit("removehandle", num);
+    }
   }
 }
 </script>
@@ -65,5 +75,15 @@ export default {
 
 .handle-item {
   width: 40%;
+}
+
+.handle-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.handle-card-header__btn {
+  cursor: pointer;
 }
 </style>
