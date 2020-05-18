@@ -2,22 +2,16 @@ package views
 
 import (
 	"fmt"
-	"io/ioutil"
+	"html/template"
 	"net/http"
-	"path/filepath"
 )
 
 func Settings(w http.ResponseWriter, r *http.Request) {
 	// 处理设置页面表单
 	r.ParseForm()
 	if r.Method == "GET" {
-		absPath, _ := filepath.Abs("templates/settings.html")
-		data, err := ioutil.ReadFile(absPath)
-		if err != nil {
-			fmt.Println("rad file err:", err.Error())
-			return
-		}
-		fmt.Fprintf(w, string(data))
+		t, _ := template.ParseFiles("templates/settings.html")
+		t.Execute(w, nil)
 	} else {
 		// 请求的是登录数据，那么执行登录的逻辑判断
 		fmt.Println("username:", r.Form["username"])

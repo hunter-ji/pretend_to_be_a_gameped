@@ -4,15 +4,15 @@ import (
 	"github.com/go-vgo/robotgo"
 )
 
-func oneBtn(key string) {
+func OneBtn(key string) {
 	robotgo.KeyTap(key)
 }
 
-func twoBtn(key, key2 string) {
+func TwoBtn(key, key2 string) {
 	robotgo.KeyTap(key, key2)
 }
 
-func toggleBtn(key string, module bool) {
+func ToggleBtn(key string, module bool) {
 	if module {
 		robotgo.KeyToggle(key, "down")
 	} else {

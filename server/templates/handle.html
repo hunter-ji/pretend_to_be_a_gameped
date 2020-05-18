@@ -39,10 +39,8 @@
 <script>
     const left1 = document.getElementById("left1");
     left1.onclick = () => {
-        console.log("heihei");
-        axios.post("/heihei", JSON.stringify({
-            code: "20000",
-            data: "Hello, World !"
+        axios.post("/btn", JSON.stringify({
+            "btn": "a"
         })).then(response => {
             console.log(response);
         })
